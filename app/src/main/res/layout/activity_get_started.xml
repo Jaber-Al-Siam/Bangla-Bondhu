@@ -43,7 +43,7 @@
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
             android:fontFamily="@font/montserrat_semibold"
-            android:text="Banga Bandhu"
+            android:text="Bangla Bandhu"
             android:textAlignment="center"
             android:textColor="#FF205072"
             android:textSize="24sp"
