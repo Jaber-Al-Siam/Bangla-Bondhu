@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Bangla-Bondhu</string>
+    <string name="title_activity_input">Input</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="todo">TODO</string>
+    <string name="image">Image</string>
+    <string name="pdf">PDF</string>
 </resources>

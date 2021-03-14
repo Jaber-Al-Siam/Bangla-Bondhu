@@ -9,6 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BanglaBondhu">
+        <activity android:name=".activity_register_number"></activity>
+        <activity
+            android:name=".InputActivity"
+            android:label="@string/title_activity_input"
+            android:theme="@style/Theme.BanglaBondhu.NoActionBar" />
+        <activity
+            android:name=".GetStartedActivity"
+            android:label=".activity_get_started"
+            android:theme="@style/Theme.BanglaBondhu.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
