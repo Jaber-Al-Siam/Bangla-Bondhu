@@ -6,7 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".InputActivity"
     android:background="#FFF">
-    <include layout="@layout/toolbar_menu"/>
+
+    <include
+        android:id="@+id/back_btn"
+        layout="@layout/toolbar_menu" />
     <com.google.android.material.appbar.AppBarLayout
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
