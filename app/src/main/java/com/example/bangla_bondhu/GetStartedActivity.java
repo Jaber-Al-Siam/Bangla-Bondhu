@@ -1,5 +1,6 @@
 package com.example.bangla_bondhu;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -13,8 +14,8 @@ public class GetStartedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_get_started);
     }
 
-    public void onClick(View view){
-        // Button button = (Button) findViewById(R.id.btn_getStarted);
-        setContentView(R.layout.activity_input);
+    public void getStartedClick(View view){
+        Intent intent = new Intent(this, InputActivity.class);
+        startActivity(intent);
     }
 }
