@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".GetStartedActivity"
     android:background="#FFF">
 
     <RelativeLayout
@@ -82,7 +82,7 @@
             android:background="@drawable/btn_verification_page"
             android:fontFamily="@font/montserrat_bold"
             android:gravity="center_horizontal"
-            android:onClick="onClick"
+            android:onClick="getStartedClick"
             android:padding="20dp"
             android:paddingStart="35dp"
             android:paddingEnd="35dp"

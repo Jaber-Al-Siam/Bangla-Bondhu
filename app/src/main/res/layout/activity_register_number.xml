@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".RegisterNumberActivity"
     android:background="#FFF">
     <include layout="@layout/toolbar_menu"/>
     <RelativeLayout
@@ -34,7 +34,8 @@
             android:text="Enter Your Phone Number"
             android:textAlignment="center"
             android:textColor="#FF205072"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:gravity="center_horizontal" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
