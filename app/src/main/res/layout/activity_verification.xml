@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".VerificationActivity"
     android:background="#FFF">
     <include layout="@layout/toolbar_menu"/>
     <RelativeLayout
@@ -208,18 +208,20 @@
         android:orientation="horizontal"
         android:gravity="bottom"
         android:layout_marginBottom="50dp">
+
         <Button
             android:id="@+id/btn_continue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="35dp"
-            android:layout_marginTop="10dp"
-            android:paddingEnd="35dp"
             android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="50dp"
             android:background="@drawable/btn_verification_page"
             android:fontFamily="@font/montserrat_bold"
+            android:onClick="continueClick"
             android:padding="20dp"
+            android:paddingStart="35dp"
+            android:paddingEnd="35dp"
             android:text="@string/continue_text"
             android:textColor="#fff"
             android:textSize="15sp" />
