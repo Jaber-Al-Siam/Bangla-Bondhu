@@ -43,12 +43,23 @@
 
         </com.google.android.material.tabs.TabLayout>
     </com.google.android.material.appbar.AppBarLayout>
+    <Button
+    android:id="@+id/addbutton"
+        android:layout_marginTop="160dp"
+    android:layout_width="230dp"
+        android:background="@color/cardview_light_background"
+    android:layout_height="wrap_content"
+    android:text="@string/add" />
+
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+
+
+    </androidx.viewpager.widget.ViewPager>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
