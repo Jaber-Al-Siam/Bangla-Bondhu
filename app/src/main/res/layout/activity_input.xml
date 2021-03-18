@@ -43,13 +43,17 @@
 
         </com.google.android.material.tabs.TabLayout>
     </com.google.android.material.appbar.AppBarLayout>
+
     <Button
-    android:id="@+id/addbutton"
+        android:id="@+id/addbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
         android:layout_marginTop="160dp"
-    android:layout_width="230dp"
-        android:background="@color/cardview_light_background"
-    android:layout_height="wrap_content"
-    android:text="@string/add" />
+        android:background="@drawable/gradient_color"
+        android:text="@string/add"
+
+        app:backgroundTint="#009688" />
 
 
     <androidx.viewpager.widget.ViewPager
