@@ -60,4 +60,7 @@
 
             android:elevation="8dp"
             android:text="Sign In with Google"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            tools:targetApi="lollipop" />
+    </LinearLayout>
+</ScrollView>
