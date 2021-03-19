@@ -44,7 +44,7 @@
         android:layout_gravity="center">
 
         <EditText
-            android:id="@+id/editText_phoneNumber"
+            android:id="@+id/get_phoneNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="65dp"
@@ -53,18 +53,18 @@
             android:background="@drawable/phone_number_textbox"
             android:drawablePadding="-25dp"
             android:fontFamily="@font/montserrat_medium"
+            android:gravity="center_horizontal"
             android:inputType="phone"
             android:maxLength="16"
             android:paddingStart="5dp"
             android:paddingTop="6dp"
             android:paddingEnd="5dp"
-            android:textColor="#001829"
             android:paddingBottom="6dp"
             android:text="+880 "
             android:textAlignment="center"
+            android:textColor="#001829"
             android:textCursorDrawable="@drawable/edit_text_small_cursor"
-            android:textSize="22sp"
-            android:gravity="center_horizontal" />
+            android:textSize="22sp" />
 
 
     </LinearLayout>
