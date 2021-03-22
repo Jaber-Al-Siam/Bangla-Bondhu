@@ -49,18 +49,13 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="100dp"/>
+            android:layout_height="200dp"/>
 
 
-        <Button
-            android:id="@+id/google_signIn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_verification_page"
-
-            android:elevation="8dp"
-            android:text="Sign In with Google"
-            android:textColor="#fff"
-            tools:targetApi="lollipop" />
+        <com.google.android.gms.common.SignInButton
+            android:layout_gravity="center"
+            android:id="@+id/sign_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </ScrollView>
