@@ -15,7 +15,7 @@ public class GetStartedActivity extends AppCompatActivity {
     }
 
     public void getStartedClick(View view){
-        Intent intent = new Intent(this, InputActivity.class);
+        Intent intent = new Intent(this, GoogleSigninActivity.class);
         startActivity(intent);
     }
 }
