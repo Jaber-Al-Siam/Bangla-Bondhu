@@ -46,15 +46,24 @@
 
     <Button
         android:id="@+id/addbutton"
-        android:layout_width="match_parent"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
 
         android:layout_marginTop="160dp"
         android:background="@drawable/gradient_color"
-        android:text="@string/add"
+        android:text="Take image"
 
         app:backgroundTint="#009688" />
+    <Button
+        android:id="@+id/addimage"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="215dp"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/gradient_color"
+        android:text="add image"
 
+        app:backgroundTint="#009688" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
