@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,9 +21,11 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.bangla_bondhu.ui.main.SectionsPagerAdapter;
+import com.google.android.gms.vision.Frame;
+import com.google.android.gms.vision.text.TextBlock;
+import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 
 public class InputActivity extends AppCompatActivity {
@@ -32,6 +35,7 @@ public class InputActivity extends AppCompatActivity {
     // Asif
     ImageView imgView;
     Button btnSelect;
+    Button process;
 
     private int REQUEST_STORAGE = 111;
     private int REQUEST_FILE = 222;
@@ -39,6 +43,10 @@ public class InputActivity extends AppCompatActivity {
     private Uri uri;
     private String stringPath;
     private Intent iData;
+
+    private static void onClick(View v) {
+
+    }
     // Asif
 
     @Override
@@ -49,6 +57,7 @@ public class InputActivity extends AppCompatActivity {
         // Asif
         imgView = findViewById(R.id.imgView);
         btnSelect = findViewById(R.id.addimage);
+
 
         btnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +94,28 @@ public class InputActivity extends AppCompatActivity {
 
         });
 
+        /*process = (Button) findViewById(R.id.process_btn);
+        process.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
+                if(!textRecognizer.isOperational()){
+                    Log.d(TAG, "onClick: Process Error");
+                }
+                else{
+                    Frame frame = new Frame.Builder().setBitmap(bitmap).build();
+                    SparseArray<TextBlock> sparseArray = textRecognizer.detect(frame);
+                    StringBuilder stringBuilder = new StringBuilder();
+                    for(int i = 0; i < sparseArray.size(); i++){
+                        TextBlock text = sparseArray.valueAt(i);
+                        stringBuilder.append(text.getValue());
+                        stringBuilder.append("\n");
+                    }
+                    Log.d(TAG, "Image Text: " + stringBuilder.toString());
+                }
+            }
+        });*/
+
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
@@ -105,31 +136,48 @@ public class InputActivity extends AppCompatActivity {
             if (data != null){
                 uri = data.getData();
                 iData = data;
-                String path = URIUtils.getPathFromUri(this, uri);
 
+                /*String path = URIUtils.getPathFromUri(this, uri);
                 try {
                     Detect.detectDocumentText(path);
                 } catch (IOException e) {
                     e.printStackTrace();
                     Log.d(TAG, "onActivityResult: Process error " + e.getMessage());
                 }
-                Log.d("PhoneNumber", "onActivityResult: " + path);
+                Log.d("PhoneNumber", "onActivityResult: " + path);*/
 
                 try {
                     InputStream inputStream = getContentResolver().openInputStream(uri);
 
                     Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    //bitmap = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.demo);
                     imgView.setImageBitmap(bitmap);
+                    Log.d(TAG, "onActivityResult: ");
+
+                    TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
+                    if(!textRecognizer.isOperational()){
+                        Log.d(TAG, "onClick: Image Process Error");
+                    }
+                    else {
+                        Frame frame = new Frame.Builder().setBitmap(bitmap).build();
+                        SparseArray<TextBlock> sparseArray = textRecognizer.detect(frame);
+                        StringBuilder stringBuilder = new StringBuilder();
+                        for (int i = 0; i < sparseArray.size(); i++) {
+                            TextBlock text = sparseArray.valueAt(i);
+                            stringBuilder.append(text.getValue());
+                            stringBuilder.append("\n");
+                        }
+                        Log.d(TAG, "Image Text: " + stringBuilder.toString());
+                        Log.d(TAG, "onActivityResult: বাংলা");
+                    }
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
             }
-
         }
     }
     // asif
-
     public void backButtonClick(View view){
         this.finish();
     }
