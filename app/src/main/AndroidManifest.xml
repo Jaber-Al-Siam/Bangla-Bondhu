@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BanglaBondhu">
-        <activity android:name=".SigninLoginActivity"></activity>
+        <activity android:name=".SigninLoginActivity" />
         <activity android:name=".GetStartedActivity" />
         <activity android:name=".RegisterNumberActivity" />
         <activity android:name=".VerificationActivity" />
@@ -28,10 +28,8 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

@@ -7,30 +7,26 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
-
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.provider.MediaStore;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
+
 import com.example.bangla_bondhu.ui.main.SectionsPagerAdapter;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 
 public class InputActivity extends AppCompatActivity {
+    private static final String TAG  = "PhoneNumber";
     Button camera;
 
     // Asif
@@ -67,39 +63,31 @@ public class InputActivity extends AppCompatActivity {
         });
         //Asif
 
-        camera =(Button)findViewById(R.id.addbutton);
-        camera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        camera = (Button)findViewById(R.id.addbutton);
+        camera.setOnClickListener(view -> {
+
+            if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(InputActivity.this, new String[] {Manifest.permission.CAMERA}, REQUEST_STORAGE);
+            }
+            else{
                 try {
                     Intent intent = new Intent();
                     intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivity(intent);
+                    Log.d("PhoneNumber", "onClick: camera");
                 }
                 catch(Exception e)
                 {
                     e.printStackTrace();
+                    Log.d("PhoneNumber", "onClick: camera exception" + e.getMessage());
                 }
-
             }
 
-
         });
-
-
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     // asif
@@ -117,7 +105,15 @@ public class InputActivity extends AppCompatActivity {
             if (data != null){
                 uri = data.getData();
                 iData = data;
+                String path = URIUtils.getPathFromUri(this, uri);
 
+                try {
+                    Detect.detectDocumentText(path);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.d(TAG, "onActivityResult: Process error " + e.getMessage());
+                }
+                Log.d("PhoneNumber", "onActivityResult: " + path);
 
                 try {
                     InputStream inputStream = getContentResolver().openInputStream(uri);
