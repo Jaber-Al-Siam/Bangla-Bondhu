@@ -6,7 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".InputActivity"
     android:background="#FFF">
-    <include layout="@layout/toolbar_menu"/>
+
+    <include
+        android:id="@+id/back_btn"
+        layout="@layout/toolbar_menu" />
+
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="377dp"
+        android:layout_height="457dp"
+        android:layout_margin="15dp"
+        app:layout_anchor="@+id/view_pager"
+        app:layout_anchorGravity="center" />
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
@@ -41,11 +53,48 @@
         </com.google.android.material.tabs.TabLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <Button
+        android:id="@+id/addbutton"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="160dp"
+        android:background="@drawable/gradient_color"
+        android:text="Take image"
+
+        app:backgroundTint="#009688" />
+
+    <Button
+        android:id="@+id/addimage"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="215dp"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/gradient_color"
+        android:text="add image"
+
+        app:backgroundTint="#009688" />
+
+
+
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:id="@+id/imgView"
+        android:layout_margin="15dp"
+
+        />
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+
+
+    </androidx.viewpager.widget.ViewPager>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
