@@ -149,6 +149,10 @@ public class InputActivity extends AppCompatActivity {
                 try {
                     InputStream inputStream = getContentResolver().openInputStream(uri);
 
+                    //TextAnnotation textAnnotation = VisionAPI.call(inputStream);
+                    /*Toast.makeText(getApplicationContext(),
+                            textAnnotation.getText(), Toast.LENGTH_LONG).show();*/
+
                     Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                     //bitmap = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.demo);
                     imgView.setImageBitmap(bitmap);
@@ -168,7 +172,6 @@ public class InputActivity extends AppCompatActivity {
                             stringBuilder.append("\n");
                         }
                         Log.d(TAG, "Image Text: " + stringBuilder.toString());
-                        Log.d(TAG, "onActivityResult: বাংলা");
                     }
 
                 } catch (FileNotFoundException e) {
