@@ -36,6 +36,7 @@ public class InputActivity extends AppCompatActivity {
     ImageView imgView;
     Button btnSelect;
     Button process;
+    Button addbutton;
 
     private int REQUEST_STORAGE = 111;
     private int REQUEST_FILE = 222;
@@ -57,6 +58,8 @@ public class InputActivity extends AppCompatActivity {
         // Asif
         imgView = findViewById(R.id.imgView);
         btnSelect = findViewById(R.id.addimage);
+        //safat
+        addbutton = findViewById(R.id.addbutton);
 
 
         btnSelect.setOnClickListener(new View.OnClickListener() {
@@ -90,9 +93,14 @@ public class InputActivity extends AppCompatActivity {
                     e.printStackTrace();
                     Log.d("PhoneNumber", "onClick: camera exception" + e.getMessage());
                 }
+
             }
 
-        });
+
+
+        }
+        );
+
 
         /*process = (Button) findViewById(R.id.process_btn);
         process.setOnClickListener(new View.OnClickListener() {
@@ -120,6 +128,8 @@ public class InputActivity extends AppCompatActivity {
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
     }
+
+    
 
     // asif
     private void selectImage() {
@@ -180,6 +190,8 @@ public class InputActivity extends AppCompatActivity {
             }
         }
     }
+
+
     // asif
     public void backButtonClick(View view){
         this.finish();
