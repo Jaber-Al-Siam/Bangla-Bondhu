@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bangla_bondhu">
+    package="com.example.bangla_bondhu" >
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -12,7 +12,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BanglaBondhu">
+        android:theme="@style/Theme.BanglaBondhu" >
+        <activity android:name=".CaptureImageActivity" >
+        </activity>
         <activity android:name=".SigninLoginActivity" />
         <activity android:name=".GetStartedActivity" />
         <activity android:name=".RegisterNumberActivity" />
@@ -25,14 +27,17 @@
             android:name=".GoogleSigninActivity"
             android:label=".activity_get_started"
             android:theme="@style/Theme.BanglaBondhu.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="orc" />
     </application>
+
 </manifest>
