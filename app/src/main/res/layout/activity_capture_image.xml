@@ -27,6 +27,7 @@
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="130dp"
             android:layout_width="160dp"
+            android:fontFamily="@font/baloo"
             android:layout_height="100dp"/>
 
 
