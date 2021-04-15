@@ -75,10 +75,10 @@ public class InputActivity extends AppCompatActivity {
         });
         //Asif
 
-        camera = (Button)findViewById(R.id.addbutton);
+        camera = (Button) findViewById(R.id.addbutton);
         camera.setOnClickListener(view -> {
 
-            if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            /*if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
                 ActivityCompat.requestPermissions(InputActivity.this, new String[] {Manifest.permission.CAMERA}, REQUEST_STORAGE);
             }
             else{
@@ -94,10 +94,11 @@ public class InputActivity extends AppCompatActivity {
                     Log.d("PhoneNumber", "onClick: camera exception" + e.getMessage());
                 }
 
-            }
+            }*/
 
-
-
+            Intent intent = new Intent(this, CaptureImageActivity.class);
+            this.finish();
+            startActivity(intent);
         }
         );
 
