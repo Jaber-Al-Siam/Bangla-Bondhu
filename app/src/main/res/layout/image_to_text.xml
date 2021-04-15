@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/activity_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_main_app_icon"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp"
+        android:layout_marginTop="120dp"
+        android:layout_height="350dp"
+        android:background="@drawable/phone_number_textbox"
+        android:text="Hello World!" />
+
+    <Button
+        android:id="@+id/buttonContinue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="555dp"
+        android:background="@drawable/btn_verification_page"
+        android:fontFamily="@font/montserrat_bold"
+        android:padding="20dp"
+        android:paddingStart="35dp"
+        android:paddingEnd="35dp"
+        android:text="SAVE"
+        android:textColor="#FFFF" />
+
+
+</RelativeLayout>
