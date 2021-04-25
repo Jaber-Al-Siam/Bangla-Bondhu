@@ -1,2 +1,3 @@
+include ':googlecloudtts'
 include ':app'
 rootProject.name = "Bangla-Bondhu"

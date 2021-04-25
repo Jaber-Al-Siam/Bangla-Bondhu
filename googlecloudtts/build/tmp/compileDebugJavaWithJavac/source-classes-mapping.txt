@@ -1,0 +1,45 @@
+darren/googlecloudtts/exception/ApiException.java
+ darren.googlecloudtts.exception.ApiException
+darren/googlecloudtts/GoogleCloudTTS.java
+ darren.googlecloudtts.GoogleCloudTTS
+darren/googlecloudtts/exception/ApiResponseFailException.java
+ darren.googlecloudtts.exception.ApiResponseFailException
+darren/googlecloudtts/api/SynthesizeApiImpl.java
+ darren.googlecloudtts.api.SynthesizeApiImpl
+darren/googlecloudtts/parameter/AudioEncoding.java
+ darren.googlecloudtts.parameter.AudioEncoding
+darren/googlecloudtts/model/VoicesList.java
+ darren.googlecloudtts.model.VoicesList
+darren/googlecloudtts/api/SynthesizeApi.java
+ darren.googlecloudtts.api.SynthesizeApi
+darren/googlecloudtts/parameter/SynthesisInput.java
+ darren.googlecloudtts.parameter.SynthesisInput
+darren/googlecloudtts/api/VoicesApi.java
+ darren.googlecloudtts.api.VoicesApi
+darren/googlecloudtts/response/VoicesResponse.java
+ darren.googlecloudtts.response.VoicesResponse
+ darren.googlecloudtts.response.VoicesResponse$Voices
+darren/googlecloudtts/GoogleCloudTTSFactory.java
+ darren.googlecloudtts.GoogleCloudTTSFactory
+darren/googlecloudtts/parameter/AudioConfig.java
+ darren.googlecloudtts.parameter.AudioConfig
+darren/googlecloudtts/GoogleCloudAPIConfig.java
+ darren.googlecloudtts.GoogleCloudAPIConfig
+darren/googlecloudtts/util/GsonUtil.java
+ darren.googlecloudtts.util.GsonUtil
+ darren.googlecloudtts.util.GsonUtil$1
+ darren.googlecloudtts.util.GsonUtil$2
+darren/googlecloudtts/exception/OutOfScopeException.java
+ darren.googlecloudtts.exception.OutOfScopeException
+darren/googlecloudtts/api/VoicesApiImpl.java
+ darren.googlecloudtts.api.VoicesApiImpl
+darren/googlecloudtts/request/SynthesizeRequest.java
+ darren.googlecloudtts.request.SynthesizeRequest
+darren/googlecloudtts/response/SynthesizeResponse.java
+ darren.googlecloudtts.response.SynthesizeResponse
+darren/googlecloudtts/parameter/VoiceSelectionParams.java
+ darren.googlecloudtts.parameter.VoiceSelectionParams
+darren/googlecloudtts/parameter/SsmlVoiceGender.java
+ darren.googlecloudtts.parameter.SsmlVoiceGender
+darren/googlecloudtts/BuildConfig.java
+ darren.googlecloudtts.BuildConfig

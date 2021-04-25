@@ -68,11 +68,11 @@ public class Detect {
      * @throws IOException on Input/Output errors.
      */
     // [START vision_fulltext_detection]
+    //577622820424-1bitphi5dhtm6vd3f542n589kaal867c.apps.googleusercontent.com
     public static void detectDocumentText(String filePath) throws IOException {
         List<AnnotateImageRequest> requests = new ArrayList<>();
 
         ByteString imgBytes = ByteString.readFrom(new FileInputStream(filePath));
-
         Image img = Image.newBuilder().setContent(imgBytes).build();
         Feature feat = Feature.newBuilder().setType(Type.DOCUMENT_TEXT_DETECTION).build();
         AnnotateImageRequest request =

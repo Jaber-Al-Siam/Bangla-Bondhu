@@ -14,4 +14,5 @@
     <color name="startColor">#FF7BE495</color>
     <color name="endColor">#FF329D9C</color>
     <color name="textbox_fill">#54D59F</color>
+    <color name="colorDeepBlue">#00BFFF</color>
 </resources>
