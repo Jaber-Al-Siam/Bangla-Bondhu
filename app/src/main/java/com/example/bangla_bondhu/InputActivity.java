@@ -84,16 +84,9 @@ public class InputActivity extends AppCompatActivity {
             }
         });
 
-<<<<<<< HEAD
 
         takeImage.setOnClickListener(view -> {
             if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-=======
-        camera = (Button) findViewById(R.id.addbutton);
-        camera.setOnClickListener(view -> {
-
-            /*if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
->>>>>>> 6b1ff1585cacfba5677af9d7cf670a44ac480ef3
                 ActivityCompat.requestPermissions(InputActivity.this, new String[] {Manifest.permission.CAMERA}, REQUEST_STORAGE);
             }
             else{
@@ -102,12 +95,12 @@ public class InputActivity extends AppCompatActivity {
                     intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivity(intent);
                 }
-                catch(Exception e) {
+                catch(Exception e)
+                {
                     e.printStackTrace();
                     Log.d("PhoneNumber", "onClick: camera exception" + e.getMessage());
                 }
 
-<<<<<<< HEAD
             }
         });
 
@@ -116,24 +109,6 @@ public class InputActivity extends AppCompatActivity {
                 int result = mTTS.setLanguage(new Locale("bn_IN"));
                 if(result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED){
                     Toast.makeText(getApplicationContext(), "Language not supported", Toast.LENGTH_SHORT).show();
-=======
-            }*/
-
-            Intent intent = new Intent(this, CaptureImageActivity.class);
-            this.finish();
-            startActivity(intent);
-        }
-        );
-
-
-        /*process = (Button) findViewById(R.id.process_btn);
-        process.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
-                if(!textRecognizer.isOperational()){
-                    Log.d(TAG, "onClick: Process Error");
->>>>>>> 6b1ff1585cacfba5677af9d7cf670a44ac480ef3
                 }
                 else{
                     Log.d(TAG, "onInit: TTS Initialized successfully");
