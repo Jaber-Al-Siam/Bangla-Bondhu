@@ -20,6 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BanglaBondhu">
+        <activity android:name=".DashboardActivity"></activity>
         <activity android:name=".model.gcptts.GCloudTTSActivity" />
         <activity android:name=".OCRActivity" />
         <activity android:name=".CaptureImageActivity" />

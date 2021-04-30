@@ -6,8 +6,8 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="24"
-8-->C:\Users\User\Desktop\Bangla-Bondhu\googlecloudtts\src\main\AndroidManifest.xml
+8-->/Users/safathossain/AndroidStudioProjects/Bangla-Bondhu/googlecloudtts/src/main/AndroidManifest.xml
 9        android:targetSdkVersion="28" />
-9-->C:\Users\User\Desktop\Bangla-Bondhu\googlecloudtts\src\main\AndroidManifest.xml
+9-->/Users/safathossain/AndroidStudioProjects/Bangla-Bondhu/googlecloudtts/src/main/AndroidManifest.xml
 10
 11</manifest>
