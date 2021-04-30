@@ -11,23 +11,67 @@
     android:paddingBottom="16dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_marginTop="20dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_main_app_icon"/>
+    </RelativeLayout>
 
+    <ImageButton
 
-    <Button
         android:layout_marginTop="150dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:paddingTop="55dp"
+        android:paddingStart="65dp"
         android:id="@+id/imagetotext"
         android:layout_width="match_parent"
         android:layout_height="130dp"
+        android:elevation="1.5dp"
         android:background="@drawable/btn_imagetotext"
-        android:text="Button" />
+        android:src="@drawable/ic_baseline_image_24"
+
+        android:text="Image To Text" />
+
+
+    <ImageButton
+
+        android:layout_marginTop="310dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingTop="55dp"
+        android:paddingStart="65dp"
+        android:id="@+id/pdftotext"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:elevation="1.5dp"
+        android:background="@drawable/btn_pdftotext"
+        android:src="@drawable/ic_baseline_pdf_24"
+
+        android:text="Image To Text" />
+
+    <ImageButton
+
+        android:layout_marginTop="470dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/tts"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:elevation="1.5dp"
+        android:background="@drawable/btn_tts_dashboard"
+        android:src="@drawable/ic_loud_speaker"
+
+        android:text="Image To Text" />
 
 
 </RelativeLayout>
