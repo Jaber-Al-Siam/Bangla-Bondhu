@@ -15,7 +15,7 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     public void continueClick(View view){
-        Intent intent = new Intent(this, InputActivity.class);
+        Intent intent = new Intent(this, ImageActivity.class);
         startActivity(intent);
     }
 }

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/activity_main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_main_app_icon"/>
+    </RelativeLayout>
+
+    <TextView
+
+        android:layout_marginTop="75dp"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textFontWeight="20"
+        android:minHeight="?actionBarSize"
+        android:padding="@dimen/appbar_padding"
+        android:text="@string/app_name"
+        android:textSize="27dp"
+        android:textColor="#126e82"
+
+        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
+
+    <ImageButton
+
+        android:layout_marginTop="150dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingTop="55dp"
+        android:paddingStart="65dp"
+        android:id="@+id/imagetotext"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:elevation="1.5dp"
+        android:background="@drawable/btn_imagetotext"
+        android:src="@drawable/ic_baseline_image_24"
+
+        android:text="Image To Text" />
+
+
+
+    <ImageButton
+
+        android:layout_marginTop="310dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingTop="55dp"
+        android:paddingStart="65dp"
+        android:id="@+id/pdftotext"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:elevation="1.5dp"
+        android:background="@drawable/btn_pdftotext"
+        android:src="@drawable/ic_baseline_pdf_24"
+
+        android:text="Image To Text" />
+
+    <ImageButton
+
+        android:layout_marginTop="470dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/tts"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:elevation="1.5dp"
+        android:background="@drawable/btn_tts_dashboard"
+        android:src="@drawable/ic_loud_speaker"
+
+        android:text="Image To Text" />
+
+
+</RelativeLayout>
