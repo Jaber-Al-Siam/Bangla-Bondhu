@@ -20,7 +20,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BanglaBondhu">
-        <activity android:name=".PDFActivity_" />
         <activity android:name=".DashboardActivity" />
         <activity android:name=".model.gcptts.GCloudTTSActivity" />
         <activity android:name=".OCRActivity" />
@@ -30,7 +29,7 @@
         <activity android:name=".RegisterNumberActivity" />
         <activity android:name=".VerificationActivity" />
         <activity
-            android:name=".ImageActivity"
+            android:name=".InputActivity"
             android:label="@string/title_activity_input"
             android:theme="@style/Theme.BanglaBondhu.NoActionBar" />
         <activity
@@ -40,7 +39,6 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
