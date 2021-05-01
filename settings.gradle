@@ -1,3 +1,4 @@
+include ':android-pdf-viewer'
 include ':googlecloudtts'
 include ':app'
 rootProject.name = "Bangla-Bondhu"

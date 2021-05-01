@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId "com.example.bangla_bondhu"
         minSdkVersion 24
-        targetSdkVersion 28
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -18,16 +18,6 @@ android {
 
     packagingOptions {        exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/INDEX.LIST'
-    }
-
-    defaultConfig {
-        applicationId "com.examplom.example.bangla_bondhu"
-        minSdkVersion 24
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AdroidJUnitRunner"
     }
 
     buildTypes {
@@ -76,4 +66,7 @@ dependencies {
     implementation project(path: ':googlecloudtts')
     implementation 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    implementation project(':android-pdf-viewer')
+    implementation 'org.androidannotations:androidannotations-api:4.6.0'
+    annotationProcessor "org.androidannotations:androidannotations:4.6.0"
 }
