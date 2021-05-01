@@ -19,8 +19,12 @@
     <EditText
         android:id="@+id/ettIdText"
         android:layout_width="wrap_content"
-        android:layout_height="92dp"
+        android:layout_height="200dp"
         android:inputType="textMultiLine"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:text="@string/ettPtText"
         android:textColorLink="@android:color/background_dark"
         app:layout_constraintLeft_toLeftOf="parent"
