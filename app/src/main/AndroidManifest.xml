@@ -29,7 +29,7 @@
         <activity android:name=".RegisterNumberActivity" />
         <activity android:name=".VerificationActivity" />
         <activity
-            android:name=".InputActivity"
+            android:name=".ImageActivity"
             android:label="@string/title_activity_input"
             android:theme="@style/Theme.BanglaBondhu.NoActionBar" />
         <activity

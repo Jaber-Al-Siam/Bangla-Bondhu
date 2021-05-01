@@ -43,14 +43,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collections;
-import java.util.Locale;
 
-public class InputActivity extends AppCompatActivity {
+public class ImageActivity extends AppCompatActivity {
 
     private static final String TAG  = "DEBUG";
     private  ImageView imgView;
     private final int REQUEST_STORAGE = 111;
-    private final int REQUEST_FILE = 222;
+    private final int ADD_IMAGE = 222;
+    private final int TAKE_IMAGE = 333;
     private Vision vision;
     private TextToSpeech mTTS;
     private Bitmap bitmap;
@@ -76,48 +76,39 @@ public class InputActivity extends AppCompatActivity {
 
         addImage.setOnClickListener(view -> {
             if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(InputActivity.this, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_STORAGE);
+                ActivityCompat.requestPermissions(ImageActivity.this, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_STORAGE);
             }
             else{
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                startActivityForResult(intent, REQUEST_FILE);
+                startActivityForResult(intent, ADD_IMAGE);
             }
         });
 
 
         takeImage.setOnClickListener(view -> {
             if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(InputActivity.this, new String[] {Manifest.permission.CAMERA}, REQUEST_STORAGE);
+                ActivityCompat.requestPermissions(ImageActivity.this, new String[] {Manifest.permission.CAMERA}, REQUEST_STORAGE);
             }
             else{
-                try {
-                    Intent intent = new Intent();
-                    intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivity(intent);
-                }
-                catch(Exception e)
-                {
-                    e.printStackTrace();
-                    Log.d("PhoneNumber", "onClick: camera exception" + e.getMessage());
-                }
-
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, TAKE_IMAGE);
             }
         });
 
-        mTTS = new TextToSpeech(this, status -> {
-            if(status == TextToSpeech.SUCCESS){
-                int result = mTTS.setLanguage(new Locale("bn_IN"));
-                if(result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED){
-                    Toast.makeText(getApplicationContext(), "Language not supported", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Log.d(TAG, "onInit: TTS Initialized successfully");
-                }
-            }
-            else{
-                Toast.makeText(getApplicationContext(), "TTS initialization Failed", Toast.LENGTH_LONG).show();
-            }
-        });
+//        mTTS = new TextToSpeech(this, status -> {
+//            if(status == TextToSpeech.SUCCESS){
+//                int result = mTTS.setLanguage(new Locale("bn_IN"));
+//                if(result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED){
+//                    Toast.makeText(getApplicationContext(), "Language not supported", Toast.LENGTH_SHORT).show();
+//                }
+//                else{
+//                    Log.d(TAG, "onInit: TTS Initialized successfully");
+//                }
+//            }
+//            else{
+//                Toast.makeText(getApplicationContext(), "TTS initialization Failed", Toast.LENGTH_LONG).show();
+//            }
+//        });
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
@@ -128,21 +119,31 @@ public class InputActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == REQUEST_FILE && resultCode == RESULT_OK){
+        if(resultCode == RESULT_OK && data != null){
 
-            if (data != null){
+            if(requestCode == ADD_IMAGE) {
                 Uri uri = data.getData();
-                /*try {
-                    Detect.detectDocumentText(URIUtils.getPathFromUri(this, uri));
-                } catch (IOException e) {
-                    Log.d(TAG, "on Detect call: " + e.getMessage());
-                }*/
+//                try {
+//                    Detect.detectDocumentText(URIUtils.getPathFromUri(this, uri));
+//                } catch (IOException e) {
+//                    Log.d(TAG, "on Detect call: " + e.getMessage());
+//                }
                 try {
                     InputStream inputStream = getContentResolver().openInputStream(uri);
                     bitmap = BitmapFactory.decodeStream(inputStream);
                     imgView.setImageBitmap(bitmap);
                     textDetection();
-                } catch (FileNotFoundException e) {
+                } catch (Exception e) {
+                    Log.d(TAG, "onActivityResult: " + e.getMessage());
+                }
+            }
+
+            if(requestCode == TAKE_IMAGE){
+                try {
+                    bitmap = (Bitmap) data.getExtras().get("data");
+                    imgView.setImageBitmap(bitmap);
+                    textDetection();
+                } catch (Exception e){
                     Log.d(TAG, "onActivityResult: " + e.getMessage());
                 }
             }
@@ -189,9 +190,9 @@ public class InputActivity extends AppCompatActivity {
         });
     }
 
-    private void speak(String text){
-        mTTS.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-    }
+//    private void speak(String text){
+//        mTTS.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+//    }
 
     public void backButtonClick(View view){
         this.finish();

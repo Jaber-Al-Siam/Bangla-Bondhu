@@ -85,7 +85,7 @@ public class GoogleSigninActivity extends AppCompatActivity {
                 Toast.makeText(this, "User email : "+personEmail, Toast.LENGTH_SHORT).show();
             }
 
-            startActivity(new Intent(GoogleSigninActivity.this , InputActivity.class));
+            startActivity(new Intent(GoogleSigninActivity.this , ImageActivity.class));
             // Signed in successfully, show authenticated UI.
 
         } catch (ApiException e) {
