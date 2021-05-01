@@ -33,19 +33,11 @@
             android:minHeight="?actionBarSize"
             android:padding="@dimen/appbar_padding"
             android:text="@string/app_name"
+            android:textColor="#126e82"
             android:background="@drawable/gradient_color"
             android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
 
-        <com.google.android.material.tabs.TabLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/image" />
-
-        </com.google.android.material.tabs.TabLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <Button
@@ -54,10 +46,10 @@
         android:layout_height="wrap_content"
 
         android:layout_marginTop="160dp"
-        android:background="@drawable/gradient_color"
+        android:background="#3edbf0"
         android:text="Take image"
 
-        app:backgroundTint="#009688" />
+        app:backgroundTint="#3edbf0" />
 
     <Button
         android:id="@+id/addimage"
@@ -68,7 +60,7 @@
         android:background="@drawable/gradient_color"
         android:text="add image"
 
-        app:backgroundTint="#009688" />
+        app:backgroundTint="#3edbf0" />
 
 
     <androidx.viewpager.widget.ViewPager
@@ -84,28 +76,8 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.viewpager.widget.ViewPager>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginLeft="340dp"
-        android:layout_marginBottom="20dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:rotationX="-4"
-        android:tint="@color/white"
-        app:srcCompat="@drawable/ic_attach_file_24" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/cappturebtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginLeft="340dp"
-        android:layout_marginBottom="90dp"
-        android:backgroundTint="@color/white"
-        android:clickable="true"
-        app:srcCompat="@drawable/ic_camera_24" />
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -22,6 +22,22 @@
             android:src="@drawable/ic_main_app_icon"/>
     </RelativeLayout>
 
+    <TextView
+
+        android:layout_marginTop="75dp"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textFontWeight="20"
+        android:minHeight="?actionBarSize"
+        android:padding="@dimen/appbar_padding"
+        android:text="@string/app_name"
+        android:textSize="27dp"
+        android:textColor="#126e82"
+
+        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
+
     <ImageButton
 
         android:layout_marginTop="150dp"
@@ -39,6 +55,7 @@
         android:src="@drawable/ic_baseline_image_24"
 
         android:text="Image To Text" />
+
 
 
     <ImageButton
