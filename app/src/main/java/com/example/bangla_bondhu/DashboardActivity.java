@@ -26,7 +26,7 @@ public class DashboardActivity extends AppCompatActivity {
         });
 
         pdfToText.setOnClickListener(v -> {
-            Intent intent = new Intent(DashboardActivity.this, ImageActivity.class);
+            Intent intent = new Intent(DashboardActivity.this, PDFActivity_.class);
             startActivity(intent);
         });
 
