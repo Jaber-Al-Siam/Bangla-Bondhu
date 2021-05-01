@@ -82,7 +82,6 @@
             android:background="@drawable/btn_verification_page"
             android:fontFamily="@font/montserrat_bold"
             android:gravity="center_horizontal"
-            android:onClick="getStartedClick"
             android:padding="20dp"
             android:paddingStart="35dp"
             android:paddingEnd="35dp"
