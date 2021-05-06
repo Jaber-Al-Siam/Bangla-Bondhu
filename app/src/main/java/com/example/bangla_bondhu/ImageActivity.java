@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -39,8 +38,6 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collections;
 
@@ -52,7 +49,6 @@ public class ImageActivity extends AppCompatActivity {
     private final int ADD_IMAGE = 222;
     private final int TAKE_IMAGE = 333;
     private Vision vision;
-    private TextToSpeech mTTS;
     private Bitmap bitmap;
 
     @Override
@@ -95,21 +91,6 @@ public class ImageActivity extends AppCompatActivity {
             }
         });
 
-//        mTTS = new TextToSpeech(this, status -> {
-//            if(status == TextToSpeech.SUCCESS){
-//                int result = mTTS.setLanguage(new Locale("bn_IN"));
-//                if(result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED){
-//                    Toast.makeText(getApplicationContext(), "Language not supported", Toast.LENGTH_SHORT).show();
-//                }
-//                else{
-//                    Log.d(TAG, "onInit: TTS Initialized successfully");
-//                }
-//            }
-//            else{
-//                Toast.makeText(getApplicationContext(), "TTS initialization Failed", Toast.LENGTH_LONG).show();
-//            }
-//        });
-
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
@@ -120,14 +101,8 @@ public class ImageActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode == RESULT_OK && data != null){
-
             if(requestCode == ADD_IMAGE) {
                 Uri uri = data.getData();
-//                try {
-//                    Detect.detectDocumentText(URIUtils.getPathFromUri(this, uri));
-//                } catch (IOException e) {
-//                    Log.d(TAG, "on Detect call: " + e.getMessage());
-//                }
                 try {
                     InputStream inputStream = getContentResolver().openInputStream(uri);
                     bitmap = BitmapFactory.decodeStream(inputStream);
@@ -190,21 +165,8 @@ public class ImageActivity extends AppCompatActivity {
         });
     }
 
-//    private void speak(String text){
-//        mTTS.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-//    }
-
     public void backButtonClick(View view){
         this.finish();
-    }
-
-    @Override
-    protected void onDestroy() {
-        if(mTTS != null){
-            mTTS.stop();
-            mTTS.shutdown();
-        }
-        super.onDestroy();
     }
 
     private InputStream bitmap2InputStream(Bitmap bm) {
