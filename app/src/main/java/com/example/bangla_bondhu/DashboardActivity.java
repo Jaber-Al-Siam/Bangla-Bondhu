@@ -22,12 +22,12 @@ public class DashboardActivity extends AppCompatActivity {
         ImageButton tts = findViewById(R.id.tts);
 
         imageToText.setOnClickListener(v -> {
-            Intent intent = new Intent(DashboardActivity.this, InputActivity.class);
+            Intent intent = new Intent(DashboardActivity.this, ImageActivity.class);
             startActivity(intent);
         });
 
         pdfToText.setOnClickListener(v -> {
-            Intent intent = new Intent(DashboardActivity.this, InputActivity.class);
+            Intent intent = new Intent(DashboardActivity.this, PDFActivityTwo.class);
             startActivity(intent);
         });
 

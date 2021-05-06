@@ -23,13 +23,14 @@
         <activity android:name=".DashboardActivity" />
         <activity android:name=".model.gcptts.GCloudTTSActivity" />
         <activity android:name=".OCRActivity" />
-        <activity android:name=".CaptureImageActivity" />
         <activity android:name=".SigninLoginActivity" />
         <activity android:name=".GetStartedActivity" />
         <activity android:name=".RegisterNumberActivity" />
         <activity android:name=".VerificationActivity" />
+        <activity android:name=".PDFActivity_" />
+        <activity android:name=".PDFActivityTwo" />
         <activity
-            android:name=".InputActivity"
+            android:name=".ImageActivity"
             android:label="@string/title_activity_input"
             android:theme="@style/Theme.BanglaBondhu.NoActionBar" />
         <activity
