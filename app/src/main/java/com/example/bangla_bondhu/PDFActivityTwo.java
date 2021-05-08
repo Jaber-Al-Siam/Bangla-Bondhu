@@ -5,13 +5,17 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.pdf.PdfDocument;
+import android.graphics.pdf.PdfRenderer;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -31,25 +35,35 @@ import com.google.api.services.vision.v1.model.BatchAnnotateImagesResponse;
 import com.google.api.services.vision.v1.model.Feature;
 import com.google.api.services.vision.v1.model.Image;
 import com.google.api.services.vision.v1.model.TextAnnotation;
+import com.hbisoft.pickit.PickiT;
+import com.hbisoft.pickit.PickiTCallbacks;
+import com.tom_roush.pdfbox.pdmodel.PDDocument;
+import com.tom_roush.pdfbox.rendering.PDFRenderer;
 
 import org.apache.commons.io.IOUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Collections;
 
-public class PDFActivityTwo extends AppCompatActivity {
+public class PDFActivityTwo extends AppCompatActivity implements PickiTCallbacks {
 
     private static final String TAG  = "DEBUG";
     private final int REQUEST_STORAGE = 111;
     private final int PICK_PDF = 222;
 
     Button btn_filePicker;
-    Intent myFileIntent;
     PDFView pdfView;
     private Vision vision;
     private Bitmap bitmap;
+    private PickiT pickiT;
+    private String pdfText = "";
+    private int processedPage = 0;
+    private int totalPage = 0;
 
 
     @Override
@@ -57,8 +71,9 @@ public class PDFActivityTwo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pdf_two);
 
-        btn_filePicker = (Button) findViewById(R.id.btn_filePicker);
+        btn_filePicker = findViewById(R.id.btn_filePicker);
         pdfView = findViewById(R.id.pdfView);
+        pickiT = new PickiT(this, this, this);
 
         Vision.Builder visionBuilder = new Vision.Builder(
                 new NetHttpTransport(),
@@ -75,26 +90,63 @@ public class PDFActivityTwo extends AppCompatActivity {
                 ActivityCompat.requestPermissions(PDFActivityTwo.this, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_STORAGE);
             }
             else{
-                myFileIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                myFileIntent.setType("*/*");
-                startActivityForResult(myFileIntent, PICK_PDF);
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("application/pdf");
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//                startActivityForResult(intent, PICK_PDF);
+                startActivityForResult(Intent.createChooser(intent, "Choose a pdf file"), PICK_PDF);
             }
         });
+    }
+
+    // This method is used to extract all pages in image (PNG) format.
+    private void getImagesFromPDF(File pdfFilePath) throws IOException {
+
+        ParcelFileDescriptor fileDescriptor = ParcelFileDescriptor.open(pdfFilePath, ParcelFileDescriptor.MODE_READ_ONLY);
+
+        PdfRenderer renderer = new PdfRenderer(fileDescriptor);
+
+        final int pageCount = renderer.getPageCount();
+        totalPage = pageCount;
+
+        // Iterating pages
+        for (int i = 0; i < pageCount; i++) {
+            Log.d(TAG, "getImagesFromPDF: processing " + i);
+
+            PdfRenderer.Page page = renderer.openPage(i);
+
+            bitmap = Bitmap.createBitmap(page.getWidth(), page.getHeight(),Bitmap.Config.ARGB_8888);
+
+            // Creating Canvas from bitmap.
+            Canvas canvas = new Canvas(bitmap);
+
+            canvas.drawColor(Color.WHITE);
+            canvas.drawBitmap(bitmap, 0, 0, null);
+
+            page.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY);
+            textDetection();
+            page.close();
+        }
+    }
+
+    private void startGCloudTTS(){
+        Intent intent = new Intent(PDFActivityTwo.this, GCloudTTSActivity.class);
+        intent.putExtra("text", pdfText);
+        startActivity(intent);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && data != null) {
+        if(resultCode == RESULT_OK) {
             if (requestCode == PICK_PDF) {
+                assert data != null;
                 Uri uri = data.getData();
                 pdfView.fromUri(uri).load();
                 try {
-                    InputStream inputStream = getContentResolver().openInputStream(uri);
-                    bitmap = BitmapFactory.decodeStream(inputStream);
-                    textDetection();
+                    pickiT.getPath(data.getData(), Build.VERSION.SDK_INT);
                 } catch (Exception e){
-                    Log.d(TAG, "onActivityResultError: " + e.getMessage());
+                    Log.d(TAG, "onActivityResultError: " + e.getStackTrace().toString());
                 }
             }
         }
@@ -128,11 +180,13 @@ public class PDFActivityTwo extends AppCompatActivity {
                 runOnUiThread(() -> Toast.makeText(getApplicationContext(),
                         text.getText(), Toast.LENGTH_LONG).show());
 
-                //speak(text.getText());
-                Intent intent = new Intent(this, GCloudTTSActivity.class);
-                intent.putExtra("text", text.getText());
-                startActivity(intent);
+                pdfText += text.getText();
                 Log.d(TAG, "textDetection:\n" + text.getText());
+                processedPage++;
+
+                if(processedPage == totalPage){
+                    startGCloudTTS();
+                }
 
             } catch(Exception e) {
                 Log.d(TAG, e.getMessage());
@@ -144,5 +198,32 @@ public class PDFActivityTwo extends AppCompatActivity {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         return new ByteArrayInputStream(baos.toByteArray());
+    }
+
+    @Override
+    public void PickiTonUriReturned() {
+
+    }
+
+    @Override
+    public void PickiTonStartListener() {
+
+    }
+
+    @Override
+    public void PickiTonProgressUpdate(int progress) {
+
+    }
+
+    @Override
+    public void PickiTonCompleteListener(String path, boolean wasDriveFile, boolean wasUnknownProvider, boolean wasSuccessful, String Reason) {
+        Log.d(TAG, "DEBUG" + path);
+
+        try {
+            processedPage = 0;
+            getImagesFromPDF(new File(path));
+        } catch (IOException e) {
+            Log.d(TAG, "PickiTonCompleteListener: " + e.getMessage());
+        }
     }
 }

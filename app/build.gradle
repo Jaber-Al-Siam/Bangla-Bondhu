@@ -76,4 +76,7 @@ dependencies {
     implementation project(':android-pdf-viewer')
     implementation 'org.androidannotations:androidannotations-api:4.6.0'
     annotationProcessor "org.androidannotations:androidannotations:4.6.0"
+    implementation 'com.tom_roush:pdfbox-android:1.8.10.1'
+    implementation 'in.gauriinfotech:commons:1.0.8'
+    implementation 'com.github.HBiSoft:PickiT:0.1.14'
 }

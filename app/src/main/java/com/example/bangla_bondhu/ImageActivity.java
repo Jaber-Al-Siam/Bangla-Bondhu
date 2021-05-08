@@ -106,6 +106,7 @@ public class ImageActivity extends AppCompatActivity {
                 try {
                     InputStream inputStream = getContentResolver().openInputStream(uri);
                     bitmap = BitmapFactory.decodeStream(inputStream);
+                    Log.d(TAG, "Path: " + bitmap);
                     imgView.setImageBitmap(bitmap);
                     textDetection();
                 } catch (Exception e) {
